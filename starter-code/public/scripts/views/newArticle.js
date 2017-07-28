@@ -5,6 +5,9 @@ var app = app || {};
   const newArticle = {};
 
   // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+//This function is not only initing the new article page but it is handling the hiding of
+//export and showing of tab content. When the fields are focused on it will all a change or submit handler
+//which will either be a create newarticle fucntuon or a submit newarticle
   newArticle.initNewArticlePage = function() {
     $('.tab-content').show();
     $('#export-field').hide();

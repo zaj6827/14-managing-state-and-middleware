@@ -14,12 +14,15 @@ var app = app || {};
   // REVIEW: With ES6 arrow functions, if the function only has one parameter, you don't need parentheses.
   //         This is similar to saying Article.loadAll = function(rows).
     // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+    // This function is sorting the articles array by date then maping them by creating new rows
+    // this is called in this file as well as articles.js and articlecontroller.
   Article.loadAll = rows => {
     rows.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
     Article.all = rows.map(ele => new Article(ele));
   };
 
   // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  //This function is getting /articles and loading the results with the Loadall function into articles, and invoking a callback
   Article.fetchAll = callback => {
     $.get('/articles')
     .then(
@@ -55,6 +58,11 @@ var app = app || {};
   };
 
   // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+  //This function is taking all articles by all authors and filtering it by words
+  //we use filter to create an array of all the words. We use the map and regx match
+  //to qualify the characters in the words. Then we are using length to give us an array of numbers
+  //based on characters and finally we are using reduce to add together all the values into an over all number.
+
   Article.numWordsByAuthor = () => {
     return Article.allAuthors().map(author => {
       return {
@@ -75,6 +83,7 @@ var app = app || {};
   };
 
   // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+//This function is used to delete all data in the table without deleting the schema
   Article.truncateTable = callback => {
     $.ajax({
       url: '/articles',

@@ -6,6 +6,8 @@ var app = app || {};
   repos.all = [];
 
   // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+//This functions is getting the data from the api in github and filtering it by attributes
+
   repos.requestRepos = function(callback) {
     $.get('/github/user/repos')
     .then(data => repos.all = data, err => console.error(err))

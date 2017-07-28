@@ -5,7 +5,8 @@ var app = app || {};
   const articleController = {};
 
   // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
-  // (put your response in a comment here)
+  // This function is using ctx to change to needed subject, that will be loaded via id.
+  //we are using th next() function create an object for ctx. It's being used throughtout this file.
   articleController.index = (ctx) => app.articleView.index(ctx.articles);
 
   // REVIEW: Middleware for grabbing one article by ID:
@@ -16,7 +17,8 @@ var app = app || {};
     };
 
     // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
-    // (put your response in a comment here)
+    // This function is taking articleData and articleid inside of Article and turing it into ctx
+    //It's calling Article from article.js and this used thoughout this file and in article.js
     app.Article.findWhere('article_id', ctx.params.article_id, articleData);
   };
 

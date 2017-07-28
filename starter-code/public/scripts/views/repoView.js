@@ -14,6 +14,8 @@ var app = app || {};
   const render = Handlebars.compile($('#repo-template').text());
 
   // COMMENT: What is this function doing? Where is it called? Does it call any other functions, and if so, in what file(s) do those function(s) live?
+//This is adding the repos pulled from the api previously and appending it to an ul
+//and it is being called in the aboutController.js file.
   repoView.index = function() {
     ui();
 
